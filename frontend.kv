@@ -17,7 +17,38 @@
             size_hint_y: 0.1
             on_press: root.capture()
 
+<ImageScreen>:
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 5
+        Image:
+            id: img
+            size_hint_y: 0.8
+        Button:
+            text: 'Create Shareable Link'
+            size_hint_y: 0.1
+            on_press: root.create_link()
+        Label:
+            id: link
+            text: ''
+            size_hint_y: 0.1
+        GridLayout:
+            padding: 10
+            spacing: 5
+            cols: 2
+            Button:
+                text: 'Copy Link'
+                on_press: root.copy_link()
+            Button:
+                text: 'Open Link'
+                on_press: root.open_link()
+
+
 <RootWidget>:
     CameraScreen:
         id: camera_screen
         name: 'camera_screen'
+    ImageScreen:
+        id: image_screen
+        name: 'image_screen'
