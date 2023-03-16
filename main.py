@@ -5,6 +5,7 @@ import time
 from filesharer import FileSharer
 from kivy.core.clipboard import Clipboard
 import webbrowser
+
 Builder.load_file('frontend.kv')
 
 
@@ -31,9 +32,8 @@ class CameraScreen(Screen):
 
 
 class ImageScreen(Screen):
+    link_message: str = 'Create a link first!'
 
-    link_message = 'Create a link first!' \
-                   ''
     def create_link(self):
         """Accesses the filepath generated after clicking capture button
         and uploads it to the cloud while creating a shareable link
@@ -48,14 +48,14 @@ class ImageScreen(Screen):
         try:
             webbrowser.open(self.url)
         except:
-            self.ids.link.text = link_message
+            self.ids.link.text = self.link_message
 
     def copy_link(self):
         """Copy link to the clipboard for pasting elsewhere."""
         try:
             Clipboard.copy(self.url)
         except:
-            self.ids.link.text = link_message
+            self.ids.link.text = self.link_message
 
 
 class RootWidget(ScreenManager):
